@@ -169,6 +169,12 @@ class CharitableGivingDatasetGenerator(DatasetGenerator):
         )
         return xs_generated, ys_generated / 10
 
+    def generate_data_with_mus(self, size=1000):
+        xs_generated, ys_generated, mus_generated = draw_data(
+            self.clf, self.xs_original, size=size
+        )
+        return xs_generated, ys_generated / 10, mus_generated / 10
+
     @property
     def params(self) -> Dict[str, Any]:
         return {"family": "CharitableGiving" + self.simulation_algo}
